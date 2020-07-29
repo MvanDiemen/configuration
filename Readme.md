@@ -1,16 +1,17 @@
 # Configuration
 
 This is the configuration I am using on my current laptop.
+It is based on [My previous dotfiles](https://github.com/MvanDiemen/dotfiles) which became too cluttered after some years.
 
-I am using:
+This is an attempt to go back to the basics and only include what I actually use/need, which is:
 
-  * i3
+  * i3 (gaps)
   * Polybar
   * Terminator
   * Dunst
   * Visual Studio Code
 
-## Fonts
+### Fonts
 
 The fonts I am using are:
 
@@ -18,3 +19,30 @@ The fonts I am using are:
   * Fira Code
   * Noto Emoji
   * Font Awesome 4/5
+
+## i3
+
+In the past I have used i3 a lot and used it with fixed workspaces for specific apps. Currently I am going to a sort of
+trial period where I want to use it more 'flex' and see if I want to have dedicated workspaces again or not.
+
+I have used both the i3status bar and polybar and have been keeping with polybar as I like the setup and the look of it.
+Also I am using `betterlockscreen` instead of `i3lock` as I like the default positioning and look of the password/clock
+a bit more.
+
+## Polybar
+
+The polybar setup is pretty simplistic and close to the default example. I have changed it to a fixed center and added a
+script which can launch polybar on the correct monitor based on the different ports my current Lenovo X1 has and as I
+only use one screen at a time, not keep multiple polybars around.
+
+## Terminator
+
+WIP
+
+## Dunst
+
+WIP
+
+## VS Code
+
+WIP
