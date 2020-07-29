@@ -1,0 +1,7 @@
+*.log
+.vimrc
+*.swo
+*.swp
+tags
+.yardoc
+*.gem
