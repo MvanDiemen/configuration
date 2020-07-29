@@ -5,7 +5,8 @@ It is based on [My previous dotfiles](https://github.com/MvanDiemen/dotfiles) wh
 
 This is an attempt to go back to the basics and only include what I actually use/need, which is:
 
-  * i3 (gaps)
+  * i3                  - Currently using the `i3-gaps` version
+  * Zsh                 - This is an experiment as I am very much used to `fish`
   * Polybar
   * Terminator
   * Dunst
