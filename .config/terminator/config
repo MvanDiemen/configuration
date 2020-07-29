@@ -1,0 +1,23 @@
+[global_config]
+  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#282c34"
+    cursor_color = "#a3b3cc"
+    foreground_color = "#dcdfe4"
+    use_system_font = False
+    font = Fira Code 13
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#282c34:#e06c75:#98c379:#e5c07b:#61afef:#c678dd:#56b6c2:#dcdfe4:#282c34:#e06c75:#98c379:#e5c07b:#61afef:#c678dd:#56b6c2:#dcdfe4"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

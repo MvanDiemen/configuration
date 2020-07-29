@@ -10,6 +10,7 @@ config:
 	@ln -s ${PWD}/.config/rofi ${HOME}/.config/rofi
 	@ln -s ${PWD}/.config/polybar ${HOME}/.config/polybar
 	@ln -s ${PWD}/.config/dunst/dunstrc ${HOME}/.config/dunst/dunstrc
+	@ln -s ${PWD}/.config/terminator/config ${HOME}/.config/terminator/config
 
 git:
 	@ln -s ${PWD}/.gitignore_global ${HOME}/.gitignore_global
