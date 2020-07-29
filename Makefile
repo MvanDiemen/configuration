@@ -7,6 +7,8 @@ help:
 
 config:
 	@ln -s ${PWD}/.config/nvim/init.vim ${HOME}/.config/nvim/init.vim
+	@ln -s ${PWD}/.config/i3/config ${HOME}/.config/i3/config
+	@ln -s ${PWD}/.config/i3/xrandr_i3.sh ${HOME}/.config/i3/xrandr_i3.sh
 	@ln -s ${PWD}/.config/rofi ${HOME}/.config/rofi
 	@ln -s ${PWD}/.config/polybar ${HOME}/.config/polybar
 	@ln -s ${PWD}/.config/dunst/dunstrc ${HOME}/.config/dunst/dunstrc
