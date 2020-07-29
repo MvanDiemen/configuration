@@ -1,0 +1,11 @@
+[user]
+  email = van.diemen.michael@gmail.com
+  name  = Michaël van Diemen
+[core]
+  editor = nvim
+[push]
+  default = current
+[pager]
+  diff = false
+[url "git@github.com:"]
+  insteadOf = https://github.com/

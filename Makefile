@@ -14,6 +14,7 @@ config:
 
 git:
 	@ln -s ${PWD}/.gitignore_global ${HOME}/.gitignore_global
+	@ln -s ${PWD}/.gitconfig ${HOME}/.gitconfig
 
 bindings:
 	@ln -s ${PWD}/.Xmodmap ${HOME}/.Xmodmap
