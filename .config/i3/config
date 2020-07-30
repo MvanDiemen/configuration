@@ -16,6 +16,9 @@ font pango:Fira Code 10
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+# Start ~compton~ picom
+exec picom -b --backend glx --paint-on-overlay --refresh-rate 60 --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method -1
+
 # Use light to adjust the brightness of the laptop monitor
 bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 10"
 bindsym XF86MonBrightnessUp   exec --no-startup-id "light -A 10"
