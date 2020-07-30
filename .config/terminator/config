@@ -1,6 +1,5 @@
 [global_config]
   enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
-[keybindings]
 [profiles]
   [[default]]
     background_color = "#282c34"
@@ -20,4 +19,3 @@
     [[[child1]]]
       type = Terminal
       parent = window0
-[plugins]
