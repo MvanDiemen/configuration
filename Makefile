@@ -13,6 +13,7 @@ config:
 	@ln -s ${PWD}/.config/polybar ${HOME}/.config/polybar
 	@ln -s ${PWD}/.config/dunst/dunstrc ${HOME}/.config/dunst/dunstrc
 	@ln -s ${PWD}/.config/terminator/config ${HOME}/.config/terminator/config
+	@ln -s ${PWD}/.zshrc ${HOME}/.zshrc
 
 git:
 	@ln -s ${PWD}/.gitignore_global ${HOME}/.gitignore_global
@@ -21,3 +22,4 @@ git:
 bindings:
 	@ln -s ${PWD}/.Xmodmap ${HOME}/.Xmodmap
 	@xmodmap ${HOME}/.Xmodmap
+
