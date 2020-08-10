@@ -17,6 +17,7 @@ config:
 	@mkdir -p ${HOME}/.config/terminator
 	@ln -s ${PWD}/.config/terminator/config ${HOME}/.config/terminator/config
 	@ln -s ${PWD}/.zshrc ${HOME}/.zshrc
+	@ln -s ${PWD}/.config/fish ${HOME}/.config/fish
 
 git:
 	@ln -s ${PWD}/.gitignore_global ${HOME}/.gitignore_global
