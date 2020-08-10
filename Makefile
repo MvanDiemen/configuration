@@ -6,12 +6,15 @@ help:
 	@echo "bindings      - Link and configure key bindigns"
 
 config:
+	@mkdir -p ${HOME}/.config/nvim
 	@ln -s ${PWD}/.config/nvim/init.vim ${HOME}/.config/nvim/init.vim
 	@ln -s ${PWD}/.config/i3/config ${HOME}/.config/i3/config
 	@ln -s ${PWD}/.config/i3/xrandr_i3.sh ${HOME}/.config/i3/xrandr_i3.sh
 	@ln -s ${PWD}/.config/rofi ${HOME}/.config/rofi
 	@ln -s ${PWD}/.config/polybar ${HOME}/.config/polybar
+	@mkdir -p ${HOME}/.config/dunst
 	@ln -s ${PWD}/.config/dunst/dunstrc ${HOME}/.config/dunst/dunstrc
+	@mkdir -p ${HOME}/.config/terminator
 	@ln -s ${PWD}/.config/terminator/config ${HOME}/.config/terminator/config
 	@ln -s ${PWD}/.zshrc ${HOME}/.zshrc
 
