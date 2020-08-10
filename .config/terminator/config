@@ -1,16 +1,21 @@
 [global_config]
-  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
+  title_hide_sizetext = True
+  title_transmit_fg_color = "#dcdfe4"
+  title_transmit_bg_color = "#282c34"
+  title_receive_fg_color = "#dcdfe4"
+  title_receive_bg_color = "#282c34"
+  title_inactive_fg_color = "#555753"
+  title_inactive_bg_color = "#282c34"
+[keybindings]
 [profiles]
   [[default]]
     background_color = "#282c34"
     cursor_color = "#a3b3cc"
+    font = Fira Code Medium 12
     foreground_color = "#dcdfe4"
-    use_system_font = False
-    font = Fira Code 13
-    foreground_color = "#ffffff"
-    show_titlebar = False
     scrollback_infinite = True
     palette = "#282c34:#e06c75:#98c379:#e5c07b:#61afef:#c678dd:#56b6c2:#dcdfe4:#282c34:#e06c75:#98c379:#e5c07b:#61afef:#c678dd:#56b6c2:#dcdfe4"
+    use_system_font = False
 [layouts]
   [[default]]
     [[[window0]]]
@@ -19,3 +24,4 @@
     [[[child1]]]
       type = Terminal
       parent = window0
+[plugins]
