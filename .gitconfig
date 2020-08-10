@@ -1,5 +1,5 @@
 [user]
-  email = van.diemen.michael@gmail.com
+  email = michael@feedbackfruits.com
   name  = Michaël van Diemen
 [core]
   editor = nvim
@@ -10,4 +10,4 @@
 [url "git@github.com:"]
   insteadOf = https://github.com/
 [pull]
-	rebase = true
+  rebase = true
