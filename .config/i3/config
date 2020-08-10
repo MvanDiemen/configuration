@@ -9,6 +9,9 @@ gaps outer 2
 
 font pango:Fira Code 10
 
+# You can also use any non-zero value if you'd like to have a border
+for_window [class=".*"] border pixel 0
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
