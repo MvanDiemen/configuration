@@ -133,6 +133,9 @@ bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
+# Make Nautilus and Lightscreen float
+for_window [class="Nautilus"] floating enable
+for_window [class="Lightscreen"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
