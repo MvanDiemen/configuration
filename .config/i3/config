@@ -172,6 +172,9 @@ bindsym $mod+r mode "resize"
 # Start bluetooth power
 exec --no-startup-id bluetoothctl power on
 
+# Set background
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpapers/ultraviolet.jpg
+
 # Start xrandr based on the available monitor setups
 exec_always ~/.config/i3/xrandr_i3.sh
 
@@ -180,6 +183,3 @@ exec_always ~/.config/polybar/launch.sh
 
 # Reinitialise the modmap
 exec_always xmodmap ~/.Xmodmap
-
-# Set background
-exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpapers/ultraviolet.jpg
