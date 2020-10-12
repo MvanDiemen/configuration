@@ -3,6 +3,7 @@
   name  = Michaël van Diemen
 [core]
   editor = nvim
+	excludesfile = /home/michael/.gitignore_global
 [push]
   default = current
 [pager]
