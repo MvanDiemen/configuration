@@ -1,11 +1,21 @@
 # i3 config file (v4)
 #
+#   ██╗
+#   ╚═╝
+#   ██╗  ██████╗
+#   ██║  ╔════██╗
+#   ██║  ██████╔╝
+#   ██║  ╔════██╗
+#   ██║  ██████╔╝
+#   ╚═╝  ╚═════╝
+#
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
 
 gaps inner 5
 gaps outer 2
+gaps top 32
 
 font pango:Fira Code 10
 
@@ -20,17 +30,16 @@ for_window [class=".*"] border pixel 0
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Start ~compton~ picom
-exec picom -b --backend glx --refresh-rate 60 --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method
+exec picom --dbus --config ~/.config/picom/picom.conf -b
 
 # Use light to adjust the brightness of the laptop monitor
 bindsym XF86MonBrightnessDown exec --no-startup-id "sudo xbacklight -dec 10"
 bindsym XF86MonBrightnessUp   exec --no-startup-id "sudo xbacklight -inc 10"
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -45,7 +54,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show combi -theme Arc-Dark -location 0
 
 # lock the screen
-bindsym $mod+Shift+x exec betterlockscreen -l dim
+bindsym $mod+Shift+x exec multimonitorlock -l dim
 
 # change focus
 bindsym $mod+j focus left
@@ -173,10 +182,10 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id bluetoothctl power on
 
 # Set background
-exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpapers/ultraviolet.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/clouds-painting.jpg
 
 # Start xrandr based on the available monitor setups
-exec_always ~/.config/i3/xrandr_i3.sh
+# exec_always ~/.config/i3/xrandr_i3.sh
 
 # Restart the polybar after reinitialising the i3 and the monitors
 exec_always ~/.config/polybar/launch.sh
