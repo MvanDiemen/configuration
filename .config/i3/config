@@ -51,7 +51,7 @@ bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher and window list)
-bindsym $mod+d exec rofi -show combi -theme Arc-Dark -location 0
+bindsym $mod+d exec rofi -show combi -theme nord -location 0
 
 # lock the screen
 bindsym $mod+Shift+x exec multimonitorlock -l dim
@@ -150,6 +150,16 @@ for_window [class="Lightscreen"] floating enable
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
+# i3 UI colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #33415E #33415E #cbccc6 #2e9ef4   #285577
+client.focused_inactive #1f2430 #1f2430 #5C6773 #484e50   #5f676a
+client.unfocused        #1f2430 #1f2430 #cbccc6 #292d2e   #222222
+client.urgent           #f28779 #1f2430 #cbccc6 #900000   #f27669
+client.placeholder      #000000 #1f2430 #cbccc6 #000000   #0c0c0c
+
+client.background       #ffffff
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

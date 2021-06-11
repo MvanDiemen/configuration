@@ -24,6 +24,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'enricobacis/vim-airline-clock'
 
 " Color schemes
+Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
+Plug 'ayu-theme/ayu-vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-two-firewatch'
 Plug 'joshdick/onedark.vim'
 Plug 'haishanh/night-owl.vim'
@@ -79,7 +82,8 @@ set colorcolumn+=120
 set smartindent
 set autoindent
 set background=dark
-color gruvbox
+let ayucolor="mirage"
+colorscheme nord
 
 let g:python3_host_prog = '/usr/bin/python3'
 

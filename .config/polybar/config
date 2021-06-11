@@ -1,4 +1,4 @@
-;==========================================================
+;=========================================================
 ;
 ;
 ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
@@ -17,15 +17,19 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #1f2430
-background-alt = #1f2430
-;foreground = ${xrdb:color7:#222}
-foreground = #cbccc6
-foreground-alt = #5c6773
+; NORD
+background = #2E3440
+background-alt = #2E3440
+foreground = #D8DEE9
+foreground-alt = #D8DEE9
+; AYU
+; background = #1f2430
+; background-alt = #1f2430
+; foreground = #cbccc6
+; foreground-alt = #5c6773
 primary = #FFCC66
 secondary = #e60053
-alert = #f28779
+alert = #FF3333
 
 [bar/top]
 monitor = ${env:MONITOR:eDP1}
@@ -34,6 +38,7 @@ height = 27
 fixed-center = true
 offset-y = 5
 offset-x = 5
+enable-ipc = true
 
 override-redirect = true
 wm-restack = i3
