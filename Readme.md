@@ -6,7 +6,6 @@ It is based on [My previous dotfiles](https://github.com/MvanDiemen/dotfiles) wh
 This is an attempt to go back to the basics and only include what I actually use/need, which is:
 
   * i3                  - Currently using the `i3-gaps` version
-  * Zsh                 - This is an experiment as I am very much used to `fish`
   * Polybar
   * Terminator
   * Dunst
@@ -20,6 +19,14 @@ The fonts I am using are:
   * Fira Code
   * Noto Emoji
   * Font Awesome 4/5
+
+## eCryptfs
+
+As I don't like encryption solutions for the entire disk where you need to fill in a password to mount/unlock the disk
+on each boot, eCryptfs provides a solution more like FileVault where the user password decrypts the home dir.
+
+For this I used `encryptfs-utils` and followed the [The
+wiki](https://wiki.archlinux.org/title/ECryptfs#Encrypting_a_home_directory).
 
 ## i3
 
