@@ -20,7 +20,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf.vim'
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+" optional for icon support
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+
 Plug 'enricobacis/vim-airline-clock'
 
 " Color schemes
@@ -36,6 +42,7 @@ Plug 'ntk148v/vim-horizon'
 " Languages
 Plug 'sheerun/vim-polyglot'
 Plug 'dag/vim-fish'
+Plug 'elixir-editors/vim-elixir'
 
 call plug#end()
 
@@ -65,6 +72,7 @@ set softtabstop=2
 set shiftwidth=2
 set tw=120
 set wrap linebreak
+set autoread
 
 
 " ===========================================================================
@@ -83,9 +91,12 @@ set smartindent
 set autoindent
 set background=dark
 let ayucolor="mirage"
-colorscheme nord
+colorscheme two-firewatch
+let g:two_firewatch_italics=1
 
 let g:python3_host_prog = '/usr/bin/python3'
+
+let g:coc_node_path = '/home/michael/.asdf/shims/node'
 
 " ============================================================================
 " FZF
@@ -126,6 +137,8 @@ let g:alchemist_tag_disable   = 1
 let g:rainbow_active          = 0
 let g:gruvbox_contrast_dark   = 'dark'
 
+highlight clear SignColumn
+
 " NERDTree settings
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore     = ['\.pyc$', '\.pyo$', '__pycache__', '\.DS_Store', '\.swo$', '\.swp$', '\.keep']
@@ -145,7 +158,7 @@ let g:NERDTreeIndicatorMapCustom = {
 
 " Airline/Powerline settings
 let g:airline_powerline_fonts = 1
-let g:airline_theme           = 'gruvbox'
+let g:airline_theme='twofirewatch'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_disable_statusline = 0
@@ -176,6 +189,8 @@ function! Trim()
 
 " Automatically strip trailing whitespace.
 autocmd! BufWritePre * :call Trim()
+autocmd BufWritePost *.ex silent !mix format <afile>
+autocmd BufWritePost *.exs silent !mix format <afile>
 
 " Set a few filetypes for some uncommon extensions
 au BufRead,BufNewFile *.md     setf markdown
@@ -191,6 +206,7 @@ au InsertLeave * match Visual /\s\+$/
 au BufWinLeave * call clearmatches()
 
 " Use 2 spaces per indentation level for Ruby, YAML and Vim script.
+au FileType glixir setlocal sw=2 sts=2 ts=2 expandtab
 au FileType ruby   setlocal sw=2 sts=2 ts=2 expandtab
 au FileType eruby  setlocal sw=2 sts=2 ts=2 expandtab
 au FileType yaml   setlocal sw=2 sts=2 ts=2 expandtab
@@ -207,7 +223,9 @@ map <F6> :NERDTreeToggle<CR><Esc>
 map <F7> :GitGutterLineHighlightsToggle<CR><Esc>
 map <F8> :Gblame<space>w<CR><Esc>
 
-nnoremap \ :Rg<SPACE>
+
+nnoremap <c-P> <cmd>lua require('fzf-lua').files()<CR>
+nnoremap \ :Rg -g '!.git'<SPACE>
 nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 noremap <Up>    <NOP>
@@ -219,6 +237,12 @@ nnoremap :Wq :wq
 nnoremap :WQ :wq
 nnoremap :W :w
 nnoremap :Q :q
+
+" ElixirLS / COC bindings
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 noremap <MiddleMouse> <Nop>
 inoremap <MiddleMouse> <Nop>
