@@ -1,6 +1,6 @@
 #!/bin/bash
 # Get the first detected option and use that one
-autorandr $(autorandr --detected | head -n 1)
+autorandr -c
 
 # Old xrandr scripts
 # if xrandr | grep "^HDMI.* connected" -A 2 | grep "2560x1440"; then

@@ -43,3 +43,20 @@ set -g fish_prompt_pwd_dir_length 1
 set -g theme_display_ruby no
 set -g theme_project_dir_length 1
 
+source /opt/asdf-vm/asdf.fish
+
+alias gc="git checkout"
+alias gpull="git pull"
+alias gpush="git push"
+alias gc-="git checkout -- ."
+alias gs="git status"
+alias iserver="iex -S mix phx.server"
+alias depsget="mix deps.get"
+alias migrate="mix ecto.migrate"
+
+begin
+    set --local AUTOJUMP_PATH $HOME/.autojump/share/autojump/autojump.fish
+    if test -e $AUTOJUMP_PATH
+        source $AUTOJUMP_PATH
+    end
+end

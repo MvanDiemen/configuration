@@ -1,5 +1,5 @@
 [user]
-  email = michael@feedbackfruits.com
+  email = michael.vandiemen@wearewuunder.com
   name  = Michaël van Diemen
 [core]
   editor = nvim
@@ -12,12 +12,7 @@
   insteadOf = https://github.com/
 [pull]
   rebase = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [commit]
-	gpgsign = true
+	gpgsign = false
 [gpg]
 	program = /usr/bin/gpg2
