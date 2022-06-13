@@ -1,9 +1,6 @@
-/** Configured For Applets **/
-
 configuration {
-  show-icons:         true;
-  icon-theme:         "Papirus";
-  location: 5;
-  yoffset: -50;
-  xoffset: -20;
+  modi: "combi";
+  combi-modi: [window,drun,run];
+  show-icons: true;
 }
+@theme "~/.config/rofi/arc.rasi"
