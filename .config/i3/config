@@ -29,6 +29,10 @@ for_window [class=".*"] border pixel 0
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+# Set screen layout
+exec --no-startup-id ~/.screenlayout/monitor.sh
+exec --no-startup-id ~/.screenlayout/monitor-1.sh
+
 # Start ~compton~ picom
 exec picom --dbus --config ~/.config/picom/picom.conf -b
 
@@ -50,7 +54,7 @@ bindsym XF86AudioPrev exec spotifyctl previous
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -201,8 +205,9 @@ exec --no-startup-id bluetoothctl power on
 
 # Set background
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/nord-peeks.png
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/zion.jpg
-exec_always multilockscreen -u /home/michael/Pictures/wallpapers/nookdark.jpg
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/zion.jpg
+exec_always --no-startup-id sleep 2 && nitrogen --restore
+# exec_always multilockscreen -u /home/michael/Pictures/wallpapers/tropical.png
 
 # Start xrandr based on the available monitor setups
 # exec_always ~/.config/i3/xrandr_i3.sh
@@ -211,7 +216,16 @@ exec_always multilockscreen -u /home/michael/Pictures/wallpapers/nookdark.jpg
 exec_always ~/.config/polybar/launch.sh
 # exec arandr-indicator
 exec nm-applet
-exec autorandr display
+# exec autorandr display
+
+# start docker db
+exec docker-compose -f /home/michael/Repos/wuunder/docker-compose.yml up -d
 
 # Reinitialise the modmap
 exec_always xmodmap ~/.Xmodmap
+
+# Desktop notifications
+# exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
+# alternative if you installed aside with XFCE4:
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+
