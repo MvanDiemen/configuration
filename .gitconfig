@@ -1,12 +1,12 @@
 [user]
-  email = <michael.vandiemen@wearewuunder.com>
-  name = Michaël van Diemen
+	email = <michael.vandiemen@wearewuunder.com>
+	name = Michaël van Diemen
 [core]
   editor = nvim
 	excludesfile = /home/michael/.gitignore_global
 [push]
   default = current
-  autoSetupRemote = true
+	autoSetupRemote = true
 [pager]
   diff = false
 [url "git@github.com:"]
