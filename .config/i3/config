@@ -31,7 +31,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Set screen layout
 exec --no-startup-id ~/.screenlayout/monitor.sh
-exec --no-startup-id ~/.screenlayout/monitor-1.sh
 
 # Start ~compton~ picom
 exec picom --dbus --config ~/.config/picom/picom.conf -b
@@ -63,10 +62,11 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+s sticky toggle
 
 # start rofi (a program launcher and window list)
+# bindsym $mod+d exec rofi -show combi  -location 0
 bindsym $mod+d exec rofi -show combi -theme nord -location 0
 
 # lock the screen
-bindsym $mod+Shift+x exec multilockscreen -l dim
+bindsym $mod+Shift+x exec betterlockscreen -l dim
 
 # change focus
 bindsym $mod+j focus left
@@ -219,7 +219,7 @@ exec nm-applet
 # exec autorandr display
 
 # start docker db
-exec docker-compose -f /home/michael/Repos/wuunder/docker-compose.yml up -d
+# exec docker-compose -f /home/michael/Repos/wuunder/docker-compose.yml up -d
 
 # Reinitialise the modmap
 exec_always xmodmap ~/.Xmodmap
