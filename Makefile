@@ -10,6 +10,7 @@ help:
 	@echo "picom         - Set up picom configuration"
 	@echo "polybar       - Set up polybar configuration"
 	@echo "rofi          - Set up rofi configuration"
+	@echo "spotifyd      - Set up spotifyd configuration"
 	@echo "terminator    - Set up terminator configuration"
 	@echo "vim           - Set up Neovim configuration"
 
@@ -61,6 +62,10 @@ polybar:
 rofi:
 	rm -rf ${HOME}/.config/rofi
 	ln -s ${PWD}/.config/rofi ${HOME}/.config/rofi
+
+spotifyd:
+	rm -r ${HOME}/.config/spotifyd
+	ln -s ${PWD}/.config/spotifyd ${HOME}/.config/spotifyd
 
 terminator:
 	mkdir -p ${HOME}/.config/terminator
