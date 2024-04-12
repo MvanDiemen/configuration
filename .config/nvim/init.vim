@@ -3,58 +3,62 @@
 "
 " Author:  Michaël van Diemen
 " License: Public Domain
-
+"
 filetype off
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'mileszs/ack.vim'
-Plug 'sgur/vim-editorconfig'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'jremmen/vim-ripgrep'
-Plug 'yggdroot/indentline'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/tcomment'
-Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
-Plug 'godlygeek/tabular'
+" Telescope https://github.com/nvim-telescope/telescope.nvim
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
+
+" LSP-zero https://github.com/VonHeikemen/lsp-zero.nvim
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v3.x'}
+
+" " LSP config in Nvim
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+
+" FZF
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
-Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
-" optional for icon support
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 
-Plug 'enricobacis/vim-airline-clock'
+" Harpoon
+Plug 'ThePrimeagen/harpoon'
 
-" Color schemes
-Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
-Plug 'ayu-theme/ayu-vim'
-Plug 'arcticicestudio/nord-vim'
+" Elixir
+Plug 'mhanberg/elixir.nvim'
+
+" Syntax highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" File tree
+Plug 'nvim-neo-tree/neo-tree.nvim'
+
+" Colorscheme
+Plug 'sainnhe/everforest'
 Plug 'rakr/vim-two-firewatch'
-Plug 'joshdick/onedark.vim'
-Plug 'haishanh/night-owl.vim'
-Plug 'morhetz/gruvbox'
-Plug 'ntk148v/vim-horizon'
-
-" Languages
-Plug 'sheerun/vim-polyglot'
-Plug 'dag/vim-fish'
-Plug 'elixir-editors/vim-elixir'
 
 call plug#end()
 
 filetype plugin indent on
 syntax on
 
-" ============================================================================
-" GENERAL SETTINGS
-"
+colorscheme everforest
 
+lua << EOF
+  vim.g.material_style = "darker"
+EOF
+
+" /==================\
+" | General settings |
+" \==================/
+"
 set termguicolors
-set shell=sh
+set shell=fish
 set nolazyredraw
 set showcmd
 set hid
@@ -63,9 +67,6 @@ set mouse=a
 set history=100
 set nocursorcolumn
 set nocursorline
-set shortmess+=A    " Hackityhacky no swapfile warnings
-set guioptions=aemc " Do not show GUI Messages & Remove scroll bars
-set signcolumn=yes  " Git Gutter settings
 set expandtab
 set tabstop=2
 set softtabstop=2
@@ -74,202 +75,134 @@ set tw=120
 set wrap linebreak
 set autoread
 
-
-" ===========================================================================
-" SYNTAX SETTINGS
-"
-" Settings related to configuring the syntax features of Vim such as the text
-" width, what theme to use and so on.
-"
-set textwidth=120
-" set nowrap
-set number
-set synmaxcol=400
-set colorcolumn=80
-set colorcolumn+=120
-set smartindent
-set autoindent
-set background=dark
-let ayucolor="mirage"
-colorscheme two-firewatch
-let g:two_firewatch_italics=1
-
-let g:python3_host_prog = '/usr/bin/python3'
-
-let g:coc_node_path = '/home/michael/.asdf/shims/node'
-
-" ============================================================================
-" FZF
-"
-
-" This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-
-" Indent line character
-let g:indentLine_char = '|'
-let g:indentLine_first_char = '¦'
-let g:indentLine_showFirstIndentLevel = 1
-
-" Colorscheme stuff
-let g:vim_json_syntax_conceal = 0
-let g:two_firewatch_italics   = 1
-let g:alchemist_tag_disable   = 1
-let g:rainbow_active          = 0
-let g:gruvbox_contrast_dark   = 'dark'
-
-highlight clear SignColumn
-
-" NERDTree settings
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeIgnore     = ['\.pyc$', '\.pyo$', '__pycache__', '\.DS_Store', '\.swo$', '\.swp$', '\.keep']
-let g:NERDTreeWinSize    = 30
-
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
-
-" Airline/Powerline settings
-let g:airline_powerline_fonts = 1
-let g:airline_theme='twofirewatch'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_disable_statusline = 0
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" ============================================================================
-" CUSTOM FUNCTIONS
-"
-" A collection of custom functions such as a function used for trimming
-" trailing whitespace or converting a file's encoding to UTF-8.
-
-" Removes trailing whitespace from the current buffer.
-function! Trim()
-  let l = line(".")
-  let c = col(".")
-  %s/\s\+$//eg
-  call cursor(l, c)
-:endfunction
-
-" ============================================================================
-" HOOKS
-"
-" Collection of various hooks that have to be executed when a certain filetype
-" is set or action is executed.
-
-" Automatically strip trailing whitespace.
-autocmd! BufWritePre * :call Trim()
-autocmd BufWritePost *.ex silent !mix format <afile>
-autocmd BufWritePost *.exs silent !mix format <afile>
-
-" Set a few filetypes for some uncommon extensions
-au BufRead,BufNewFile *.md     setf markdown
-au BufRead,BufNewFile Gemfile  setf ruby
-au BufRead,BufNewFile *.rake   setf ruby
-au BufRead,BufNewFile *.ru     setf ruby
-au BufNewFile,BufRead *.liquid setf liquid
-
-" Taken from http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-au BufWinEnter * match Visual /\s\+$/
-au InsertEnter * match Visual /\s\+\%#\@<!$/
-au InsertLeave * match Visual /\s\+$/
-au BufWinLeave * call clearmatches()
-
-" Use 2 spaces per indentation level for Ruby, YAML and Vim script.
-au FileType glixir setlocal sw=2 sts=2 ts=2 expandtab
-au FileType ruby   setlocal sw=2 sts=2 ts=2 expandtab
-au FileType eruby  setlocal sw=2 sts=2 ts=2 expandtab
-au FileType yaml   setlocal sw=2 sts=2 ts=2 expandtab
-au FileType coffee setlocal sw=2 sts=2 ts=2 expandtab
-au FileType liquid setlocal sw=2 sts=2 ts=2 expandtab
-
-" ============================================================================
-" KEY BINDINGS
-"
-" A collection of custom key bindings.
-"
-map <F5> :SyntasticCheck<CR><Esc>
-map <F6> :NERDTreeToggle<CR><Esc>
-map <F7> :GitGutterLineHighlightsToggle<CR><Esc>
-map <F8> :Gblame<space>w<CR><Esc>
-
-
-nnoremap <c-P> <cmd>lua require('fzf-lua').files()<CR>
-nnoremap \ :Rg -g '!.git'<SPACE>
-nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
-noremap <Up>    <NOP>
-noremap <Down>  <NOP>
-noremap <Left>  <NOP>
-noremap <Right> <NOP>
-
-nnoremap :Wq :wq
-nnoremap :WQ :wq
-nnoremap :W :w
-nnoremap :Q :q
-
-" ElixirLS / COC bindings
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-noremap <MiddleMouse> <Nop>
-inoremap <MiddleMouse> <Nop>
-
-" Easy align
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" ============================================================================
-" NVIM SPECIFICS
-"
-if !has('nvim')
-  set ttymouse=xterm2
-  nnoremap <silent> <C-p> :FZF<CR>
-endif
+set signcolumn=yes  " Git Gutter settings
 
 if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
-  nnoremap <silent> <C-p> :FZF<CR>
+  nnoremap <silent> <C-p> :Telescope find_files<CR>
   tnoremap <Esc> <C-\><C-n>
 endif
 
-if has('unix')
-  let s:uname = system("uname")
-endif
+lua << EOF
+  vim.api.nvim_set_option("clipboard","unnamed")
+EOF
+
+
+ 
+" /====================\
+" | Elixir LS settings |
+" \====================/
+lua << EOF
+local elixir = require("elixir")
+elixir.setup({
+  settings = {
+    dialyzerEnabled = true,
+    fetchDeps = true,
+    enableTestLenses = true,
+    suggestSpecs = true
+  },
+
+  on_attach = function(client, bufnr)
+    vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", { buffer = true, noremap = true })
+    vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
+    vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
+  end
+})
+
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+vim.g['mix_format_on_save'] = 1
+vim.g['mix_format_silent_errors'] = 1
+
+local lsp = require('lsp-zero')
+
+lsp.nvim_workspace()
+lsp.preset('recommended')
+lsp.on_attach(function(client, bufnr)
+  lsp.default_keymaps({ buffer = bufnr })
+end)
+
+lsp.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+  servers = {
+    ['lua_ls'] = { 'lua' },
+    ['elixirls'] = { 'elixir' },
+    ['sqlls'] = { 'sql' },
+    -- if you have a working setup with null-ls
+    -- you can specify filetypes it can format.
+    -- ['null-ls'] = {'javascript', 'typescript'},
+  }
+})
+
+local cmp = require("cmp")
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  ['<C-Space>'] = cmp.mapping.complete(),
+})
+
+lsp.set_sign_icons({
+  error = '✘',
+  warn = '▲',
+  hint = '⚑',
+  info = '»'
+})
+
+lsp.on_attach(function(client, bufnr)
+  local opts = { buffer = bufnr, remap = false }
+
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+end)
+
+lsp.setup()
+
+vim.diagnostic.config({
+  virtual_text = true
+})
+EOF
+
+" /=====================\
+" | Treesitter settings |
+" \=====================/
+"
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "html", "css", "javascript", "eex", "surface", "erlang", "heex"},
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  -- List of parsers to ignore installing (or "all")
+  ignore_install = { "javascript" },
+
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+
+  highlight = {
+    enable = true,
+    use_languagetree = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
