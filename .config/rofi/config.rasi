@@ -3,4 +3,4 @@ configuration {
   combi-modi: [window,drun,run];
   show-icons: true;
 }
-@theme "~/.config/rofi/arc.rasi"
+@theme "~/.config/rofi/nord.rasi"
