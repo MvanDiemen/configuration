@@ -6,3 +6,4 @@ tags
 .yardoc
 *.gem
 .vscode/settings.json
+.elixir-tools/
