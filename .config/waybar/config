@@ -1,0 +1,122 @@
+{
+    "margin-top" : 5,
+    "margin-left": 10,
+    "margin-right": 10,
+    "height" : 30,
+    "modules-left": [
+      "sway/window",
+      "hyprland/window",
+      "sway/mode"
+    ],
+    "modules-center": [
+      "sway/workspaces",
+      "hyprland/workspaces"
+    ],
+    "modules-right": [
+      "tray",
+      "pulseaudio",
+      "custom/spotify",
+      "network",
+      "temperature",
+      "battery",
+      "clock",
+      "custom/power"
+    ],
+    "sway/window": {
+      "format": "{}",
+      "max-length": 50,
+      "rewrite": {
+        "": "Pretty!"
+      },
+      "separate-outputs": false,
+    },
+    "hyprland/window": {
+      "separate-outputs": true,
+      "rewrite": {
+        "(.*) — Mozilla Firefox": "🌎 $1",
+        "(.*) - fish": "> [$1]"
+      },
+    },
+    "sway/workspaces": {
+      "format": "{icon}",
+      "on-click": "activate",
+      "format-icons": {
+        "active": " ",
+      },
+      "sort-by-number": true,
+    },
+    "hyprland/workspaces": {
+     "format": "{icon}",
+     "on-scroll-up": "hyprctl dispatch workspace e+1",
+     "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "clock": {
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "format-alt": " {:%Y-%m-%d}",
+      "format": " {0:%H:%M:%S}",
+      "interval": 1,
+    },
+    "cpu": {
+      "format": "  {usage}%",
+      "tooltip": false
+    },
+    "memory": {
+      "format": "{}%  "
+    },
+    "temperature": {
+      "critical-threshold": 80,
+      "format": "{icon} {temperatureC}°C",
+      "format-icons": ["", "", ""]
+    },
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{icon}  {capacity}%",
+      "format-full": "{icon}  {capacity}%",
+      "format-charging": "  {capacity}%",
+      "format-plugged": "  {capacity}%",
+      "format-alt": "{time} {icon}",
+      "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+      "format-wifi": "   {signalStrength}%",
+      "format-ethernet": "{cidr} ",
+      "tooltip-format": "{ifname} via {gwaddr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": " ⚠ ",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+      "format": "{icon}  {volume}%",
+      "format-bluetooth": "{volume}% {icon}  {format_source}",
+      "format-bluetooth-muted": " {icon}  {format_source}",
+      "format-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", ""]
+      },
+      "on-click": "amixer set Master toggle",
+      "on-click-right": "blueman-manager",
+    },
+		"custom/spotify": {
+		  "format": "  {}",
+		  "interval": 1,
+		  "on-click": "playerctl --player=spotify play-pause",
+		  "exec": "~/.config/waybar/scripts/spotify.sh"
+		},
+    "custom/screenshot": {
+      "format": "⌗",
+      "on-click": "grim -g '$(slurp)' - | swappy -f -",
+    },
+    "custom/power": { 
+      "format":"", 
+      "on-click":"rofi -show power-menu -modi power-menu:rofi-power-menu"
+    }
+}
