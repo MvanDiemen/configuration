@@ -15,28 +15,29 @@ set -Ux BROWSER '/usr/bin/firefox'
 set -Ux GIT_EDITOR 'nvim'
 set -x NVIM_TUI_ENABLE_TRUE_COLOR 1
 
+
 set fish_greeting
 
-set fish_color_command blue
-set fish_color_param 00AACC
-set fish_color_quote green
-set fish_color_cwd yellow
-set fish_color_cwd_root yellow
-set fish_color_error red
-set fish_color_status red
-set fish_color_comment 9e9e9e
-set fish_color_operator blue
-set fish_color_redirection yellow
-set fish_color_end yellow
-set fish_color_search_match --background=555
-set fish_color_valid_path
-set fish_color_match yellow
-set fish_color_autosuggestion $fish_color_comment
-
-set fish_pager_color_prefix yellow
-set fish_pager_color_progress yellow
-set fish_pager_color_completion $fish_color_redirection
-set fish_pager_color_description $fish_color_comment
+# set fish_color_command blue
+# set fish_color_param 00AACC
+# set fish_color_quote green
+# set fish_color_cwd yellow
+# set fish_color_cwd_root yellow
+# set fish_color_error red
+# set fish_color_status red
+# set fish_color_comment 9e9e9e
+# set fish_color_operator blue
+# set fish_color_redirection yellow
+# set fish_color_end yellow
+# set fish_color_search_match --background=555
+# set fish_color_valid_path
+# set fish_color_match yellow
+# set fish_color_autosuggestion $fish_color_comment
+#
+# set fish_pager_color_prefix yellow
+# set fish_pager_color_progress yellow
+# set fish_pager_color_completion $fish_color_redirection
+# set fish_pager_color_description $fish_color_comment
 
 set -g theme_nerd_fonts no
 set -g fish_prompt_pwd_dir_length 1
@@ -45,16 +46,18 @@ set -g theme_project_dir_length 1
 
 # source /opt/asdf-vm/asdf.fish
 
+alias ls="eza"
 alias gc="git checkout"
-alias gpull="git pull --no-tags"
-alias gpush="git push --no-tags"
-alias gc-="git checkout -"
-alias gc--="git checkout -- ."
+alias pull="git pull --no-tags"
+alias push="git push --no-tags"
 alias gs="git status"
-alias gf="git fetch -p --no-tags"
+alias fetch="git fetch -p --no-tags"
 alias iserver="iex -S mix phx.server"
 alias mixdeps="mix deps.get"
 alias migrate="mix ecto.migrate"
+alias finance.start="cd ~/Repos/finance && iserver"
+alias wuunder.start="cd ~/Repos/wuunder && iserver"
+alias takusan.start="cd ~/Repos/takusan && iserver"
 
 begin
     set --local AUTOJUMP_PATH $HOME/.autojump/share/autojump/autojump.fish
@@ -62,3 +65,6 @@ begin
         source $AUTOJUMP_PATH
     end
 end
+
+# Use starship
+starship init fish | source

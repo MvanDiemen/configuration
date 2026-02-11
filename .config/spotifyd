@@ -75,7 +75,7 @@ bitrate = 320
 #
 # Note: The file path does not get expanded. Environment variables and
 # shell placeholders like $HOME or ~ don't work!
-cache_path = "~/.spotify/cache"
+cache_path = "/home/michael/.spotify/cache"
 
 # The maximal size of the cache directory in bytes
 # The example value corresponds to ~ 1GB

@@ -41,9 +41,9 @@ fish:
 	ln -s ${PWD}/.config/fish ${HOME}/.config/fish
 
 git:
-	rm ${HOME}/.gitignore_global
+	rm -f ${HOME}/.gitignore_global
 	ln -s ${PWD}/.gitignore_global ${HOME}/.gitignore_global
-	rm ${HOME}/.gitconfig
+	rm -f ${HOME}/.gitconfig
 	ln -s ${PWD}/.gitconfig ${HOME}/.gitconfig
 
 i3:
@@ -64,7 +64,7 @@ rofi:
 	ln -s ${PWD}/.config/rofi ${HOME}/.config/rofi
 
 spotifyd:
-	rm -r ${HOME}/.config/spotifyd
+	rm -f ${HOME}/.config/spotifyd
 	ln -s ${PWD}/.config/spotifyd ${HOME}/.config/spotifyd
 
 terminator:

@@ -53,7 +53,7 @@ bindsym XF86AudioPrev exec spotifyctl previous
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -63,7 +63,7 @@ bindsym $mod+Shift+s sticky toggle
 
 # start rofi (a program launcher and window list)
 # bindsym $mod+d exec rofi -show combi  -location 0
-bindsym $mod+d exec rofi -show combi -theme nord -location 0
+bindsym $mod+d exec rofi -x11 -show combi -location 0
 
 # lock the screen
 bindsym $mod+Shift+x exec betterlockscreen -l dim
@@ -216,7 +216,7 @@ exec_always --no-startup-id sleep 2 && nitrogen --restore
 exec_always ~/.config/polybar/launch.sh
 # exec arandr-indicator
 exec nm-applet
-# exec autorandr display
+exec autorandr display
 
 # start docker db
 # exec docker-compose -f /home/michael/Repos/wuunder/docker-compose.yml up -d
@@ -225,7 +225,7 @@ exec nm-applet
 exec_always xmodmap ~/.Xmodmap
 
 # Desktop notifications
-# exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
+exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # alternative if you installed aside with XFCE4:
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+# exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
