@@ -6,11 +6,13 @@ help:
 	@echo "dunst         - Set up dunst configuration"
 	@echo "fish          - Set up fish configuration"
 	@echo "git           - Set up the gitignore"
+	@echo "hypr          - Set up Hyprland configuration"
 	@echo "i3            - Set up i3 configuration"
 	@echo "picom         - Set up picom configuration"
 	@echo "polybar       - Set up polybar configuration"
 	@echo "rofi          - Set up rofi configuration"
 	@echo "spotifyd      - Set up spotifyd configuration"
+	@echo "sway          - Set up sway configuration"
 	@echo "terminator    - Set up terminator configuration"
 	@echo "vim           - Set up Neovim configuration"
 
@@ -19,10 +21,12 @@ all:
 	dunst
 	fish
 	git
+	hypr
 	i3
 	picom
 	polybar
 	rofi
+	sway
 	terminator
 	vim
 
@@ -49,6 +53,19 @@ git:
 i3:
 	rm -f ${HOME}/.config/i3/config
 	ln -s ${PWD}/.config/i3/config ${HOME}/.config/i3/config
+
+sway:
+	rm -f ${HOME}/.config/sway/config
+	mkdir -p ${HOME}/.config/sway
+	ln -s ${PWD}/.config/sway/config ${HOME}/.config/sway/config
+
+hypr:
+	rm -rf ${HOME}/.config/hypr
+	ln -s ${PWD}/.config/hypr ${HOME}/.config
+
+waybar:
+	rm -rf ${HOME}/.config/waybar
+	ln -s ${PWD}/.config/waybar ${HOME}/.config/waybar
 
 picom:
 	mkdir -p ${HOME}/.config/picom
