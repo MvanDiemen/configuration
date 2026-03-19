@@ -91,6 +91,8 @@ terminator:
 
 vim:
 	mkdir -p ${HOME}/.config/nvim
-	rm -f ${HOME}/.config/nvim/init.vim
-	ln -s ${PWD}/.config/nvim/init.vim ${HOME}/.config/nvim/init.vim
+	rm -f ${HOME}/.config/nvim/init.lua
+	ln -s ${PWD}/.config/nvim/init.lua ${HOME}/.config/nvim/init.lua
+	ln -s ${PWD}/.config/nvim/lua ${HOME}/.config/nvim/lua
+	ln -s ${PWD}/.config/nvim/lsp ${HOME}/.config/nvim/lsp
 
